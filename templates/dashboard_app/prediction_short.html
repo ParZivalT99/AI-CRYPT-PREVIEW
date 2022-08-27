@@ -1,0 +1,313 @@
+{% load static %}
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+<script type="text/javascript" src="{% static 'js/apexcharts-bundle/dist/apexcharts.min.js' %}"></script>
+
+<!-- cards OHLC-->
+<div class="row mt-4 p-0 pe-md-0 mb-2 d-flex flex-row justify-content-md-evenly text-center text-md-start">
+    <!-- <div class="bg-cards col-12 mb-0 border border-primary">
+        </div> -->
+    <div class="col-md-3 col-12 mb-3 mb-md-0">
+        <div class="card card-ohlc w-100 ">
+            <div class="card-body pt-1 pe-0">
+                <h5 class="card-title mt-0 "><span class="fs-1 text-pred">O</span><span class="fs-3">pen</span></h5>
+                <p class="card-text">Precio de apertura del dia de hoy.</p>
+                <p class="card-text fs-4 fw-normal">${{OpenPrice|floatformat:"2g"}}</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-12 mb-3 mb-md-0">
+        <div class="card card-ohlc w-100 ">
+            <div class="card-body pt-1 pe-0">
+                <h5 class="card-title mt-0 "><span class="fs-1 text-pred">H</span><span class="fs-3">igh</span></h5>
+                <p class="card-text">Precio mas alto del dia de hoy.</p>
+                <p class="card-text fs-4 fw-normal">${{HighPrice|floatformat:"2g"}}</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-12 mb-3 mb-md-0">
+        <div class="card card-ohlc  w-100 ">
+            <div class="card-body pt-1 pe-0">
+                <h5 class="card-title mt-0 "><span class="fs-1 text-pred">L</span><span class="fs-3">ow</span></h5>
+                <p class="card-text">Precio mas bajo del dia de hoy.</p>
+                <p class="card-text fs-4 fw-normal">${{LowPrice|floatformat:"2g"}}</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-12 ">
+        <div class="card card-ohlc  w-100 ">
+            <div class="card-body pt-1 pe-0">
+                <h5 class="card-title mt-0 "><span class="fs-1 text-pred">C</span><span class="fs-3">lose</span>
+                </h5>
+                <p class="card-text">Precio de cierre del dia de hoy.</p>
+                <p class="card-text fs-4 fw-normal">${{ClosePrice|floatformat:"2g"}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CHART candlestick-->
+<div class=" row mt-4 mb-0">
+    <div class="col-12 p-0 pe-md-0  mb-4">
+        <div id="chart-candlestick" class=" bg-candle-chart pt-2"></div>
+        <script>
+            var i = 0;
+            var chart_data = {{ candlestick_data | safe}};
+            console.log(chart_data)
+            var options = {
+                series: [{
+                    data: chart_data
+                }],
+                chart: {
+                    type: 'candlestick',
+                    height: 380,
+                    id: "chart_candlestick"
+                },
+                title: {
+                    text: 'Estado del bitcoin en los ultimos 30 dias',
+                    align: 'left',
+                    style: {
+                        fontSize: "16px",
+                        color: '#f7931a'
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    x: {
+                        show: true,
+                        format: 'y-MMM-dd',
+                    }
+                },
+                plotOptions: {
+                    candlestick: {
+                        colors: {
+                            upward:
+                                (function () {
+                                    [function ({ value, seriesIndex, w }) {
+                                        return value
+                                    }];
+                                })(),
+                            downward: (function () {
+                                [function ({ value, seriesIndex, w }) {
+                                    return value
+                                }];
+                            })()
+                        }
+                    }
+                },
+                fill: {
+                    colors: [function ({ value, seriesIndex, w }) {
+                        last_data = chart_data[chart_data.length - 1].y.slice(-1);
+                        var open_price = chart_data[i].y[0];
+                        i++;
+
+                        /* console.log(open_price); */
+                        /* console.log(i); */
+
+                        var wchart = w['config']['plotOptions']['candlestick']['colors']['downward'];
+                        if (value == last_data) {
+                            i = 0
+                            return '#f9b35f'
+                        } else {
+                            if (value > open_price) {
+
+                                return '#00B746'
+                            } else {
+                                return '#D9534F'
+                            }
+                        }
+
+                    }],
+                },
+                xaxis: {
+                    type: 'datetime',
+                    labels: {
+                        show: true,
+                        datetimeUTC: false,
+                        style: {
+                            colors: '#f7931a',
+                            fontSize: '12px',
+                            fontFamily: 'Helvetica, Arial, sans-serif',
+                            fontWeight: 400,
+                            cssClass: 'apexcharts-xaxis-label',
+                        },
+                    },
+                },
+                yaxis: {
+                    tooltip: {
+                        enabled: true
+                    },
+                    labels: {
+                        show: true,
+                        align: 'right',
+                        style: {
+                            colors: ['#f7931a'],
+                            fontSize: '12px',
+                            fontFamily: 'Helvetica, Arial, sans-serif',
+                            fontWeight: 400,
+                            cssClass: 'apexcharts-yaxis-label',
+                        },
+                    },
+
+                }
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart-candlestick"), options);
+            chart.render();
+
+
+
+        </script>
+    </div>
+</div>
+
+
+<div class=" row  flex-row mt-0 mb-3">
+    <!-- card prediction-->
+    <div class="col-12 col-md-8 p-0 pe-md-2 mb-4 mb-md-0  d-flex align-items-stretch ">
+        <div class="d-flex w-100 ">
+            <div class=" 
+            {% if prediction_value > 0%}
+            bg-prediction-up
+           {% elif  prediction_value < 0%}
+                bg-prediction-down
+           {% else %}
+           bg-prediction-neutral
+           {% endif %}
+
+             card w-100">
+                <div class="svg-arrow">
+                    <img src="
+                   {% if prediction_value > 0%}
+                        {% static 'img/svg/diagonal-arrow-up.svg' %}
+                        {% elif  prediction_value < 0 %}
+                        {% static 'img/svg/diagonal-arrow-down.svg' %}
+                        {% else %}
+                        {% static 'img/svg/neutral-arrow.svg' %}
+                        {% endif %}
+                    
+                    " alt="" width="50" height="50">
+                </div>
+                <div class="card-body mt-2">
+                    <!-- <h5 class="card-title">Primary card title</h5> -->
+                    <h5 class="card-title mt-4 mt-sm-0 mt-0 fs-4 mb-3">Prediccion de la tendencia</span></h5>
+                    <p class="card-text  fs-5 fw-light mb-0 mt-3">Prediccion.</p>
+                    <p class="card-text fs-5 fw-bolder mt-0 line-botton ">{{prediction_value|floatformat:"2g"}}</p>
+
+                    <p class="card-text  fs-5 fw-light mb-0 mt-3">Fecha de consulta.</p>
+                    <p class="card-text fs-5 fw-bolder mt-0">{{datetime|date:"Y/m/d H:i:s"}}</p>
+
+                    <p class="card-text fw-light fs-6 mb-0 mt-3"> Al momento de hacer la consulta el Volumen BTC estaba
+                        a <span class="fw-bold">{{VolumeBTC|floatformat:"2g"}}</span> y el Volumen USD estaba a <span
+                            class="fw-bold">{{VolumeUSD|floatformat:"2g"}}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- radial chart-->
+    <div class="col-12 col-md-4  p-0 pe-md-0  mb-md-0  d-flex align-items-stretch ">
+        <div class="w-100 d-flex">
+            <div class=" card bg-radial-chart w-100">
+                <p class="fs-5 text-center  mb-0 mt-3">Precision sobre la tendencia </p>
+                <div id="radial-chart" class=" d-flex justify-content-center mt-0"></div>
+                <script>
+                    var options = {
+                        series: ['{{accuracy}}'],
+                        chart: {
+                            height: 250,
+                            type: 'radialBar',
+                            toolbar: {
+                                show: true
+                            }
+                        },
+                        plotOptions: {
+                            radialBar: {
+                                startAngle: -135,
+                                endAngle: 225,
+                                hollow: {
+                                    margin: 0,
+                                    size: '75%',
+                                    background: '#fff',
+                                    image: undefined,
+                                    imageOffsetX: 0,
+                                    imageOffsetY: 0,
+                                    position: 'front',
+                                    dropShadow: {
+                                        enabled: true,
+                                        top: 2,
+                                        left: 0,
+                                        blur: 4,
+                                        opacity: 0.24
+                                    }
+                                },
+                                track: {
+                                    background: '#fff',
+                                    strokeWidth: '87%',
+                                    margin: 0, // margin is in pixels
+                                    dropShadow: {
+                                        enabled: true,
+                                        top: -3,
+                                        left: 0,
+                                        blur: 4,
+                                        opacity: 0.35
+                                    }
+                                },
+
+                                dataLabels: {
+                                    show: true,
+                                    distributed: false,
+                                    textAnchor: 'start',
+                                    name: {
+                                        offsetY: -23,
+                                        show: true,
+                                        color: '#061d31',
+                                        fontSize: '18px',
+                                    },
+                                    value: {
+                                        formatter: function (val) {
+                                            return parseInt(val) + "/100";
+                                        },
+                                        color: '#111',
+                                        offsetY: 0,
+                                        fontSize: '35px',
+                                        fontWeight: 'bold',
+                                        show: true,
+                                    }
+                                }
+                            }
+                        },
+                        fill: {
+                            type: 'solid',
+                            colors: '#f7931a',
+                            gradient: {
+                                shade: 'dark',
+                                type: 'horizontal',
+                                shadeIntensity: 0.5,
+                                gradientToColors: ['#f7931a'],
+                                inverseColors: true,
+                                opacityFrom: 1,
+                                opacityTo: 1,
+                                stops: [0, 100]
+                            }
+                        },
+                        stroke: {
+                            lineCap: 'round'
+                        },
+                        labels: ['Precision'],
+                    };
+
+                    var chart = new ApexCharts(document.querySelector("#radial-chart"), options);
+                    chart.render();
+                </script>
+                <!-- <p class="fs-6 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec
+                    feugiat lacus. In ante nunc, mollis eget rhoncus eget, pretium quis tellus. Etiam maximus luctus
+                    fermentum.nsssssssssssssssssssssssssssssssssssssssss</p> -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/css/dashboard.css' %}" />
+{% endblock styles %}
+
+
+{% block title %}
+Inicio | AI CRYPT
+{% endblock title %}
+
+
+{% block body %}
+<div class="container-xxl  ">
+    <header class="row head  sticky-top ">
+        <div class=" col-1 col-sm-1 col-md-1 d-sm-block d-md-block d-lg-none pt-1 ps-0 ps-sm-2 mt-1   text-start ms-2">
+            <button id="menud " class="navbar-toggler btn_collap menu-options" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <svg id="list" xmlns="http://www.w3.org/2000/svg" width="35" height="43" fill="currentColor"
+                    class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+
+                <!--    <img src="img/list.svg" alt="menu" width="35" height="43" id="list"> -->
+            </button>
+
+        </div>
+        <div class="col-10 p-0 mt-2 d-sm-block d-md-block d-lg-none text-center ">
+            <a href="{% url 'dashboard_app:inicio_d' %}" class=" fs-1 fw-normal"><span class="ai-word">AI
+                </span><span class="cript-word">CRYPT</span></a>
+        </div>
+    </header>
+    <div class="row flex-nowrap ">
+        <!-- <div class="" ></div> -->
+        <div
+            class=" navbar-expand-lg col-auto col-md-0 col-lg-auto col-xl-auto col-xxl-auto px-0 px-md-0  px-lg-2  color-sidebar">
+            <nav class="collapse navbar-collapse sidebar " id="collapsibleNavbar">
+                <div class="   d-flex flex-column align-items-center  pt-4 text-white min-vh-100 ">
+
+                    <div class="text-center ">
+                        <a href="{% url 'dashboard_app:inicio_d' %}"
+                            class=" d-flex align-items-center pb-3 pb-sm-3 pb-md-3 pb-lg-4 pb-xl-4 pb-xxl-4 me-md-auto  text-decoration-none flex-column">
+                            <img class="svg_bot d-lg-none d-xl-none" src="{% static 'img/svg/icon_dashboard.svg' %}"
+                                alt="icono_bot" width="60" height="60">
+                            <h1 class=" fs-3 d-none d-sm-none d-md-none d-lg-block"><span class="ai-word">AI
+                                </span><span class="cript-word">CRYPT</span></h1>
+                            <p class="text-color f-desarollo fw-light">v1.2</p>
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center text-center pb-1 pb-md-4 pb-lg-5 pb-xl-5 pb-xxl-5  ps-2 pe-2">
+                        <img class="svg_btc" src="{% static 'img/svg/bitcoin_94576.svg' %}" alt="btc_svg">
+                    </div>
+
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start align-items-lg-start  text-center mt-4 mt-md-1"
+                        id="menu">
+                        <li class="nav-item mb-2 nav-item-test">
+                            <a href="{% url 'dashboard_app:inicio_d' %}"
+                                class=" p-0 m-0 d-flex flex-row nav-link align-middle px-0 options {% block state_inicio %}{% endblock state_inicio %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" class=" "
+                                    viewBox="0 0 28.786 26.217">
+                                    <path id="Icon_ionic-md-home" data-name="Icon ionic-md-home"
+                                        d="M14.447,30.717V21.978H21.09v8.739h6.754V17.608h4.318L17.768,4.5,3.375,17.608H7.693V30.717Z"
+                                        transform="translate(-3.375 -4.5)" fill="#061d31" />
+                                </svg>
+
+                                <p class="ms-2 fs-5 ">Inicio</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a href="{% url 'dashboard_app:prediction' %}"
+                                class="d-flex flex-row nav-link px-0 align-middle options {% block state_prediction %}{% endblock state_prediction %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
+                                    viewBox="0 0 19.14 27.197">
+                                    <path id="Icon_awesome-btc" data-name="Icon awesome-btc"
+                                        d="M15.844,12.889a4.027,4.027,0,0,0,2.1-4.319C17.67,5.524,15.276,4.5,12.1,4.218V0H9.637V4.1c-.641,0-1.3.017-1.954.033V0H5.215V4.218c-.907.029-1.964.015-4.95,0V6.963c1.948-.036,2.97-.167,3.2,1.138v11.55c-.149,1.035-.942.886-2.707.854l-.5,3.063c4.5,0,4.95.017,4.95.017V27.2H7.682V23.635c.673.017,1.33.017,1.954.017V27.2H12.1V23.585c4.133-.234,6.9-1.322,7.265-5.39C19.657,14.931,18.183,13.475,15.844,12.889ZM7.73,7.147c1.394,0,5.751-.452,5.751,2.578,0,2.9-4.357,2.561-5.751,2.561V7.147Zm0,13.374V14.864c1.666,0,6.768-.485,6.768,2.829C14.5,20.89,9.4,20.522,7.73,20.522Z"
+                                        transform="translate(-0.265)" fill="#061d31" />
+                                </svg>
+
+                                <span class="ms-2 fs-5 ">Predicción</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2 mt-2">
+                            <a href="{% url 'dashboard_app:history' %}"
+                                class="d-flex flex-row nav-link px-0 align-middle options {% block state_history %}{% endblock state_history %}">
+                                <svg width="27" height="27" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M504 255.531c.253 136.64-111.18 248.372-247.82 248.468-59.015.042-113.223-20.53-155.822-54.911-11.077-8.94-11.905-25.541-1.839-35.607l11.267-11.267c8.609-8.609 22.353-9.551 31.891-1.984C173.062 425.135 212.781 440 256 440c101.705 0 184-82.311 184-184 0-101.705-82.311-184-184-184-48.814 0-93.149 18.969-126.068 49.932l50.754 50.754c10.08 10.08 2.941 27.314-11.313 27.314H24c-8.837 0-16-7.163-16-16V38.627c0-14.254 17.234-21.393 27.314-11.314l49.372 49.372C129.209 34.136 189.552 8 256 8c136.81 0 247.747 110.78 248 247.531zm-180.912 78.784l9.823-12.63c8.138-10.463 6.253-25.542-4.21-33.679L288 256.349V152c0-13.255-10.745-24-24-24h-16c-13.255 0-24 10.745-24 24v135.651l65.409 50.874c10.463 8.137 25.541 6.253 33.679-4.21z"
+                                        fill="#061d31" />
+                                </svg>
+
+                                <span class="ms-2 fs-5 ">Historial</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2 mt-2">
+                            <a href="{% url 'dashboard_app:terms-and-uses' %}"
+                                class="d-flex flex-row nav-link px-0 align-middle options {% block state_terms %}{% endblock state_terms %}">
+                                <svg width="29" height="29" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                    viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M28.4,38h-5c-0.8,0-1.4-0.6-1.4-1.4v-1.5c0-4.2,2.7-8,6.7-9.4c1.2-0.4,2.3-1.1,3.2-2.1
+                                       c5-6,0.4-13.2-5.6-13.4c-2.2-0.1-4.3,0.7-5.9,2.2c-1.3,1.2-2.1,2.7-2.3,4.4c-0.1,0.6-0.7,1.1-1.5,1.1h-5c-0.9,0-1.6-0.7-1.5-1.6
+                                       c0.4-3.8,2.1-7.2,4.8-9.9c3.2-3,7.3-4.6,11.7-4.5c8.3,0.3,15.1,7.1,15.4,15.4c0.3,7-4,13.3-10.5,15.7c-0.9,0.4-1.5,1.1-1.5,2v1.5
+                                       C30,37.4,29.2,38,28.4,38z" />
+                                        </g>
+                                        <path d="M30,48.5c0,0.8-0.7,1.5-1.5,1.5h-5c-0.8,0-1.5-0.7-1.5-1.5v-5c0-0.8,0.7-1.5,1.5-1.5h5
+                                   c0.8,0,1.5,0.7,1.5,1.5V48.5z" />
+                                    </g>
+                                </svg>
+                                <span class="ms-2 fs-5 ">Ayuda</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item  w-100 ">
+                            <div class="d-flex flex-row justify-content-sm-start mt-3">
+                                <span class=" fs-5"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                        fill="currentColor" class="bi bi-circle-half " viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                                    </svg></span>
+                                <div
+                                    class="form-check form-switch form-switch-lg  d-flex justify-content-center ms-3 mt-05">
+                                    <input class=" form-check-input " onchange="toggleTheme()" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                    <label class="slider form-check-label" for="flexSwitchCheckDefault"></label>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <div class=" pb-2">
+                        <div class="dropdown  user text-center d-flex flex-column mt-5 by p-1 pe-2">
+                            <span class=" ">
+                                <img src="{% static 'img/svg/code-2-svg.svg' %}" alt="code" width="31" class="">
+                                <!--  <img src="{% static 'img/svg/code-svg.svg' %}" alt="code" width="25"> -->
+                                Developed
+                                By</span>
+                            <hr class="dropdown-divider pb-0">
+                            <span> </span>
+                            <span class="">Marcos Montes</span>
+                            <span class="">Alexander Pabon</span>
+                            <hr class="dropdown-divider pb-0">
+
+                            <span class=" ">© 2022</span>
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- <div class="col  pt-0 pb-0  bg-content mt-1 mb-1 me-0 me-md-3 mb-md-3 ms-md-2 mt-md-3 " > -->
+        <div class="col  pt-0 pb-0 mt-1 mb-1 me-0 me-md-2 mb-md-0 ms-md-2 mt-md-3 ">
+            <div class="container-fluid ps-1 pe-1 ps-md-2 pe-md-2 pt-md-0 ">
+                <!-- <div class="col  content-border pt-1 pb-1 pt-lg-2  pb-lg-2 ">
+            <div class="container-fluid ps-1 pe-1 ps-lg-4 pe-lg-4 pt-lg-1 bg-content "> -->
+                {% block content %}
+
+
+
+
+                {% endblock content %}
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+
+{% block moreScripts %}
+<script src="{% static 'js/theme.js' %}"></script>
+<script src="{% static 'js/navbar.js' %}"></script>
+{% block moreScripts_2 %}{% endblock moreScripts_2 %}
+
+{% endblock moreScripts %}

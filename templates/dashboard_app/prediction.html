@@ -1,0 +1,39 @@
+{% extends './dashboard.html' %}
+{% load static %}
+
+<head>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+    <script type="text/javascript" src="{% static 'js/apexcharts-bundle/dist/apexcharts.min.js' %}"></script>
+</head>
+{% block state_prediction %}
+actived
+{% endblock state_prediction %}
+
+{% block title %}
+Prediccion | AI CRYPT
+{% endblock title %}
+
+{% block content %}
+<div class=" row  d-flex justify-content-between mt-1">
+
+    <div class="col text-center">
+        <!--   <form method="get" action=".">
+            <button name='success' value="true" type='submit' class="btn-pred btn fs-3 ">Consultar prediccion</button>
+        </form> -->
+        <button hx-get="{% url 'dashboard_app:prediction-consult' %}" hx-push-url="false" hx-target="#content_prediction"
+            hx-swap="innerHTML" hx-indicator="#content-loader" class="btn-pred btn fs-3" id="btn-consult">Consultar
+            prediccion <span id="counter"></span> </button>
+    </div>
+</div>
+<div id="content_prediction">
+
+    {% block content_prediction %}
+
+    {% endblock content_prediction %}
+
+    {% endblock content %}
+
+    {% block moreScripts_2 %}
+    <!-- <script src="{% static 'js/pred.js' %}"></script> -->
+    {% endblock moreScripts_2 %}
+</div>

@@ -1,0 +1,143 @@
+{% extends './dashboard.html' %}
+{% load static %}
+
+{% block state_inicio %}
+actived
+{% endblock state_inicio %}
+
+{% block title %}
+Inicio | AI CRYPT
+{% endblock title %}
+
+
+{% block content %}
+<div class=" row d-flex flex-column mt-2">
+    <div id="tradingview_3d2ad" class="bg-cards col-12 widget">
+    </div>
+</div>
+
+<div class=" row d-flex flex-row mt-4 d-flex justify-content-between ">
+    <!-- ANALYSIS WIDGET -->
+    <div class="col-12 col-md-4  p-0 pe-md-2 mb-4 mb-md-0">
+        <div class="bg-cards widget-analysis  ">
+            <div class="tradingview-widget-container ">
+                <script type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                        {
+                            "interval": "1h",
+                                "width": "100%",
+                                    "isTransparent": false,
+                                        "height": "100%",
+                                            "symbol": "COINBASE:BTCUSD",
+                                                "showIntervalTabs": true,
+                                                    "locale": "es",
+                                                        "colorTheme": "dark"
+                        }
+                    </script>
+            </div>
+        </div>
+    </div>
+    <!-- top cryptocurrency widget-->
+    <div class="bg-cards col-12 col-md-8  widget-top-crypto mb-4 ">
+
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+            <script type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                    {
+                        "colorTheme": "dark",
+                            "dateRange": "12M",
+                                "showChart": true,
+                                    "locale": "es",
+                                        "width": "100%",
+                                            "height": "100%",
+                                                "largeChartUrl": "",
+                                                    "isTransparent": false,
+                                                        "showSymbolLogo": true,
+                                                            "showFloatingTooltip": true,
+                                                                "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+                                                                    "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+                                                                        "gridLineColor": "rgba(42, 46, 57, 0)",
+                                                                            "scaleFontColor": "rgba(255, 255, 255, 1)",
+                                                                                "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+                                                                                    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+                                                                                        "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+                                                                                            "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+                                                                                                "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+                                                                                                    "tabs": [
+                                                                                                        {
+                                                                                                            "title": "Índices",
+                                                                                                            "symbols": [
+                                                                                                                {
+                                                                                                                    "s": "COINBASE:BTCUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "COINBASE:ETHUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCEUS:USDTUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCEUS:BNBUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCEUS:USDCUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCEUS:ADAUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCEUS:SOLUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCE:XRPUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCEUS:DOGEUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "COINBASE:SHIBUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCEUS:DOTUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCEUS:AVAXUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "BINANCEUS:MATICUSD"
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "originalTitle": "Indices"
+                                                                                                        }
+                                                                                                    ]
+                    }
+                </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block moreScripts_2 %}
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script type="text/javascript">
+    new TradingView.widget(
+        {
+            "autosize": true,
+            "symbol": "COINBASE:BTCUSD",
+            "interval": "D",
+            "timezone": "America/Bogota",
+            "theme": "dark",
+            "style": "1",
+            "locale": "es",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": false,
+            "container_id": "tradingview_3d2ad"
+        }
+    );
+</script>
+{% endblock moreScripts_2 %}
