@@ -36,5 +36,9 @@ class Raw_data(d_models.Model):
 
     objects = RawDataManager()
 
+    class Meta:
+        verbose_name = "Raw data"
+        verbose_name_plural = "Raw data"
+
     def __str__(self):
         return str(self.id)

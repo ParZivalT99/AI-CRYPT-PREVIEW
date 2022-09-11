@@ -12,7 +12,7 @@ from .models import (
     Raw_data,
 )
 
-# own functions
+
 from data_test.MLdata import (
     MLData as prediction,
 )
@@ -208,7 +208,7 @@ class PredictionConsultView(CandlestickDataMixin, TemplateView):
 
 class HistoryPredictionView(ConvertAndFormatDatetimeMixin, ListView):
     template_name = "dashboard_app/history.html"
-    paginate_by = 2
+    paginate_by = 10
     model = Consultation_history
     context_object_name = "history"
 

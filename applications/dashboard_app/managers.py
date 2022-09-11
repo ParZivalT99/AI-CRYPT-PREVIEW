@@ -24,7 +24,7 @@ class HistoryManager(models.Manager):
         history.save(using=self.db)
         return history
 
-    # metodo para crear registro de un historial
+    # Method to save a consult
     def add_consult(
         self,
         open_price,
@@ -61,11 +61,10 @@ class RawDataManager(models.Manager):
             )
             for i in listDictionary
         ]
-        # raw_data.save(using=self.db)
+
         self.bulk_create(objs)
 
         return self.model()
 
-    # metodo para crear registro de un historial
     def add_raw_data(self, listDictionary):
         return self.__add_raw_data(listDictionary)

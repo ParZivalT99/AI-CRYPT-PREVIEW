@@ -107,7 +107,9 @@ class MLData:
             return dic
 
     def insert_data(self):
-
+        """
+        Method that inserts all historical btc data into the database.
+        """
         df = self.get_btc_raw_data(False)
         df = self.data_clean(df, False)
 
@@ -118,7 +120,9 @@ class MLData:
             print("There is no new data!")
 
     def get_prediction(self):
-
+        """
+        Method that returns a fictitious prediction of the btc trend.
+        """
         df = self.get_btc_raw_data(True)
         df = self.data_clean(df, True)
         df[0]["prediction_value"] = self.random_prediction()
@@ -127,3 +131,5 @@ class MLData:
 
     def random_prediction(self):
         return round(random.uniform(-10.0, 10.0), 2)
+
+
