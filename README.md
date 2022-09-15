@@ -97,4 +97,4 @@ This project is a different version of the original project.
 - JavaScript
 
 ## Author
-- [Marcos Montes](https://www.github.com/https://github.com/ParZivalT99)
+- [Marcos Montes](https://github.com/ParZivalT99)
