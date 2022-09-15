@@ -47,7 +47,7 @@ Este proyecto es una version diferente al proyecto original.
 - JavaScript
 
 ## Autor
-- [Marcos Montes](https://www.github.com/https://github.com/ParZivalT99)
+- [Marcos Montes](https://github.com/ParZivalT99)
 
 # English version
 
