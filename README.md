@@ -20,7 +20,7 @@ Este proyecto es una version diferente al proyecto original.
 **Ambos proyectos se desarrollaron con fines de aprendizaje**
 ## Requisitos
 1. Tener MongoDB instalado 
-2. Tener una api key en [cryptowat.ch](cryptowat.ch) 
+2. Tener una api key en [cryptowat.ch](https://cryptowat.ch/)
 
 ## Funcionamiento
 1.  Instalar el archivo local.txt que esta en la carpeta requemients, para instalar los package que usa el proyecto.
@@ -70,7 +70,7 @@ This project is a different version of the original project.
 **Both projects were developed for learning purposes**
 ## Requirements
 1. Have MongoDB installed .
-2. Have an api key in [cryptowat.ch](cryptowat.ch) .
+2. Have an api key in [cryptowat.ch](https://cryptowat.ch/).
 
 ## Run Locally
 1.  Install the local.txt file that is in the requirements folder, to install the packages used by the project.
