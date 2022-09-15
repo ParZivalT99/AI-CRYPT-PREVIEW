@@ -13,9 +13,9 @@ Este proyecto es una version diferente al proyecto original.
 **Este proyecto (AI CRYPT PREVIEW)  :**
 
 	Es igual en todos los aspectos al proyecto original,
-	a excepción que NO hace uso de un algoritmo predictivo,
-	en cambio se simula una prediccion ficticia con el fin
-	de poder usar y mostrar la Aplicacion Web.
+	a excepción que NO hace uso de un algoritmo predictivo, 
+	en cambio, se simula una predicción ficticia con el fin
+	de poder usar y mostrar la Aplicación Web.
 
 **Ambos proyectos se desarrollaron con fines de aprendizaje**
 ## Requisitos
