@@ -46,6 +46,21 @@ Este proyecto es una version diferente al proyecto original.
 - Bootstrap
 - JavaScript
 
+
+## Screenshots
+
+#### Pagina Inicio
+![Imgur](https://i.imgur.com/UPCM76s.jpg)
+
+#### Pagina prediccion 
+
+![Imgur](https://i.imgur.com/XRlbk7N.jpg)
+
+#### Pagina historial
+
+![Imgur](https://i.imgur.com/47IYOou.jpg)
+
+
 ## Autor
 - [Marcos Montes](https://github.com/ParZivalT99)
 
@@ -95,6 +110,19 @@ This project is a different version of the original project.
 - CSS
 - Bootstrap
 - JavaScript
+
+## Screenshots
+
+#### Home page
+![Imgur](https://i.imgur.com/UPCM76s.jpg)
+
+#### Prediction page
+
+![Imgur](https://i.imgur.com/XRlbk7N.jpg)
+
+#### History page
+
+![Imgur](https://i.imgur.com/47IYOou.jpg)
 
 ## Author
 - [Marcos Montes](https://github.com/ParZivalT99)
